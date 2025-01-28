@@ -8,14 +8,14 @@ spec:
     - kustomize:
         patches:
           - target:
-              version: apps/v1
+              version: v1
               kind: Deployment
               name: podinfo
             patch: |
               - op: add
                 path: /metadata/annotations/reloader.stakater.com~1auto
                 value: "true"
-  releaseName: podinfo
+  #  releaseName: podinfo
   chart:
     spec:
       chart: podinfo
