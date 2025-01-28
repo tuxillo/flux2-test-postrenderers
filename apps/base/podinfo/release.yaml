@@ -4,6 +4,17 @@ metadata:
   name: podinfo
   namespace: podinfo
 spec:
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              version: v1
+              kind: Deployment
+              name: podinfo
+            patch: |
+              - op: add
+                path: /metadata/annotations/reloader.stakater.com~1auto
+                value: "true"
   releaseName: podinfo
   chart:
     spec:
